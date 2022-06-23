@@ -3,7 +3,7 @@ class UsersController < ApplicationController
   def index
     @users = User.all
     @user = current_user
-    @new_book = Book.new
+    @book = Book.new
   end
 
   def show
@@ -27,7 +27,7 @@ class UsersController < ApplicationController
       flash[:notice] = "You have updated user successfully"
       redirect_to user_path(@user.id)
     else
-      render "edit"
+      render :edit
     end
   end
 
