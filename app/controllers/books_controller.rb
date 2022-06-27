@@ -23,7 +23,7 @@ class BooksController < ApplicationController
   def show
     @book = Book.find(params[:id])
     @user = @book.user
-    @new_book = Book.new
+    @book = Book.new
   end
 
   def edit
@@ -48,11 +48,11 @@ class BooksController < ApplicationController
   def destroy
     @book = Book.find(params[:id])
     @book.destroy
-    flash[:notice] = 'You have destroyed book successfully.'
     redirect_to books_path
   end
 
   private
+
   def book_params
     params.require(:book).permit(:title, :body)
   end
